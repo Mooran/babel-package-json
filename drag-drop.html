@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+    </title>
+    <style>
+        .drop{
+            width:500px;
+            height:500px;
+            /*background-color: #ff6600;*/
+            background: url('IMG_8234.jpg')
+        }
+    </style>
+</head>
+<body>
+    <!-- <input type="file" id="file"> -->
+    <!-- <button id="ceshi">ceshi</button> -->
+    <div class="drop"></div>
+    <img id="img" alt="">
+    <script>
+
+    window.onload = function(){
+        let img = document.getElementById('img')
+         let drop = document.getElementsByClassName('drop')[0]
+        drop.ondrag = function (e){
+            console.log(e)
+            e.preventDefault()
+        }
+        drop.ondragover = function (e){
+            e.preventDefault()
+        }
+        drop.ondragenter = function(e){
+
+            e.preventDefault()
+            
+        }
+        drop.ondrop=function(e){
+            [].forEach.call(e.dataTransfer.files, function (file) {
+                let reader = new FileReader();
+                reader.onload = function(data){
+                    img.src = reader.result
+                } 
+                reader.readAsDataURL(file)
+            },false);
+        // console.log(e)
+            e.preventDefault()
+            
+        }
+    }
+       
+        // drop.on
+        // let ceshi = document.getElementById('ceshi')
+        // let file = document.getElementById('file')
+        // let img = document.getElementById('img')
+        // ceshi.onclick = (e)=>{
+        //     // console.log(file.files[0])
+        //     let reader = new FileReader();
+        //     reader.onload = function(data){
+        //         console.log(reader.result)
+        //         img.src = reader.result
+        //     }  
+        //     reader.readAsDataURL(file.files[0])
+        // }
+
+
+    </script>
+</body>
+</html>
