@@ -1,69 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>
-    </title>
-    <style>
-        .drop{
-            width:500px;
-            height:500px;
-            /*background-color: #ff6600;*/
-            background: url('IMG_8234.jpg')
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>
+  </title>
+  <style>
+  * {  
+    padding:0px;
+    margin:0px;
+  }
+  body {
+    font-family: "Comic Sans MS","幼圆","黑体",sans-serif;
+  }
+  .drop{
+    width:500px;
+    height:300px;
+    background-color: #0092d8;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-size:40px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:0px auto;
+    color:#ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 35px rgba(33,33,33,.8)
+  }
+  </style>
 </head>
 <body>
-    <!-- <input type="file" id="file"> -->
-    <!-- <button id="ceshi">ceshi</button> -->
-    <div class="drop"></div>
-    <img id="img" alt="">
-    <script>
+  <!-- <input type="file" id="file"> -->
+  <!-- <button id="ceshi">ceshi</button> -->
+  <div class="drop">请将图片拖拽到这里</div>
+  <!-- <img id="img" width="300" alt=""> -->
+  <script>
 
-    window.onload = function(){
-        let img = document.getElementById('img')
-         let drop = document.getElementsByClassName('drop')[0]
-        drop.ondrag = function (e){
-            console.log(e)
-            e.preventDefault()
-        }
-        drop.ondragover = function (e){
-            e.preventDefault()
-        }
-        drop.ondragenter = function(e){
-
-            e.preventDefault()
-            
-        }
-        drop.ondrop=function(e){
-            [].forEach.call(e.dataTransfer.files, function (file) {
-                let reader = new FileReader();
-                reader.onload = function(data){
-                    img.src = reader.result
-                } 
-                reader.readAsDataURL(file)
-            },false);
-        // console.log(e)
-            e.preventDefault()
-            
-        }
+  window.onload = function(){
+    let img = document.getElementById('img')
+    let drop = document.getElementsByClassName('drop')[0]
+    drop.ondrag = function (e){
+      console.log(e)
+      e.preventDefault()
     }
-       
-        // drop.on
-        // let ceshi = document.getElementById('ceshi')
-        // let file = document.getElementById('file')
-        // let img = document.getElementById('img')
-        // ceshi.onclick = (e)=>{
-        //     // console.log(file.files[0])
-        //     let reader = new FileReader();
-        //     reader.onload = function(data){
-        //         console.log(reader.result)
-        //         img.src = reader.result
-        //     }  
-        //     reader.readAsDataURL(file.files[0])
-        // }
+    drop.ondragover = function (e){
+      e.preventDefault()
+    }
+    drop.ondragenter = function(e){
+      e.preventDefault()
+    }
+    drop.ondrop=function(e){
+      [].forEach.call(e.dataTransfer.files, function (file) {
+        let reader = new FileReader();
+        reader.onload = function(e){
+          console.log(e)
+          drop.style.backgroundImage = `url(${reader.result})`
+          drop.innerHTML = ''
+        }
+        reader.readAsDataURL(file)
+      },false);
+    // console.log(e)
+      e.preventDefault()
+
+    }
+  }
+
+    // drop.on
+    // let ceshi = document.getElementById('ceshi')
+    // let file = document.getElementById('file')
+    // let img = document.getElementById('img')
+    // ceshi.onclick = (e)=>{
+    //     // console.log(file.files[0])
+    //     let reader = new FileReader();
+    //     reader.onload = function(data){
+    //         console.log(reader.result)
+    //         img.src = reader.result
+    //     }
+    //     reader.readAsDataURL(file.files[0])
+    // }
 
 
-    </script>
+  </script>
 </body>
 </html>
