@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
   <title>css3d</title>
   <style>
     body,html {
@@ -29,12 +30,9 @@
       box-shadow: 0px 0px 50px #000;
       transform: rotate3d(0,0,0);
     }
-/*    .wrap:hover{
-      transform: rotateY(-45deg);
-    }*/
     .window-3d .card {
-      width: 500px;
-      height: 500px;
+      width: 300px;
+      height: 300px;
       /*background: -webkit-linear-gradient( top,#ccc,#000);*/
       background-color: #464646;
       color: #ff6600;
@@ -42,12 +40,6 @@
       align-items: center;
       justify-content: center;
     }
-/*    .window-3d .card:nth-child(2) {
-      width: 400px;
-      height: 400px;
-      transform: translateZ(100px) ;
-      background-color: #ff6600;
-    }*/
     .window-3d .card h1 {
       transform: translateZ(100px) ;
     }
@@ -70,19 +62,17 @@
   <script>
 
     window.onload = function(){
-      let $wrap = $('.wrap')
-      $(document.body).on('mousemove', function(e){
-        // console.log(, e.pageY-$wrap.offset().top)
-        let centerX = ($wrap.offset().left+$wrap.width())/2
-        let mouseX = e.pageX
-        let deg = -1*(180/Math.PI)*Math.atan((centerX-mouseX)/1000)
-        // console.log(deg)
-        //$wrap.css('transform', `rotateY(${deg})`);
+      var $wrap = $('.wrap')
+      var left = $wrap.offset().left;
+      $(document.body).on('mousemove touchmove', function(e){
+        e.preventDefault();
+        var centerX = (left + $wrap.width())/2
+        var mouseX = e.pageX || e.touches[0].pageX
+        var deg = -1*(180/Math.PI)*Math.atan((centerX-mouseX)/1000)
         $wrap.css('transform', `rotateY(${deg}deg)`);
-        
+
       })
       console.log()
-      // transform: rotateY(-45deg);
     };
   </script>
 </body>
