@@ -20,27 +20,36 @@
     }
     .wrap {
       transform-style: preserve-3d;
-      transform: rotateY(-45deg);
-      animation: rotate 5s;
+      /*transform: rotateY(-45deg);*/
+      /*animation: rotate 5s;*/
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .3s linear;
+      box-shadow: 0px 0px 50px #000;
+      transform: rotate3d(0,0,0);
     }
+/*    .wrap:hover{
+      transform: rotateY(-45deg);
+    }*/
     .window-3d .card {
       width: 500px;
       height: 500px;
       /*background: -webkit-linear-gradient( top,#ccc,#000);*/
       background-color: #464646;
-      color: #fff;
+      color: #ff6600;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: absolute;
-      margin-top: -250px;
-      margin-left: -250px;
     }
-    .window-3d .card:nth-child(2) {
+/*    .window-3d .card:nth-child(2) {
       width: 400px;
       height: 400px;
       transform: translateZ(100px) ;
       background-color: #ff6600;
+    }*/
+    .window-3d .card h1 {
+      transform: translateZ(100px) ;
     }
     @keyframes rotate{
       from { transform: rotateY(0deg);}
@@ -53,10 +62,28 @@
   <div class="window-3d">
     <div class="wrap">
       <div class="card">
-      </div>
-      <div class="card">
+      <h1>测试</h1>
       </div>
     </div>
   </div>
+  <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+
+    window.onload = function(){
+      let $wrap = $('.wrap')
+      $(document.body).on('mousemove', function(e){
+        // console.log(, e.pageY-$wrap.offset().top)
+        let centerX = ($wrap.offset().left+$wrap.width())/2
+        let mouseX = e.pageX
+        let deg = -1*(180/Math.PI)*Math.atan((centerX-mouseX)/1000)
+        // console.log(deg)
+        //$wrap.css('transform', `rotateY(${deg})`);
+        $wrap.css('transform', `rotateY(${deg}deg)`);
+        
+      })
+      console.log()
+      // transform: rotateY(-45deg);
+    };
+  </script>
 </body>
 </html>
