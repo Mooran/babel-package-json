@@ -5,7 +5,7 @@
   <title>
   </title>
   <style>
-  * {  
+  * {
     padding:0px;
     margin:0px;
   }
@@ -18,13 +18,12 @@
     align-items:center;
     justify-content:center;
   }
-  .drop{  
+  .drop{
     width:500px;
     height:300px;
     background-color: #4786a5;
     background-size: cover;
     background-repeat: no-repeat;
-    font-size:40px;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -33,10 +32,23 @@
     border-radius: 5px;
     box-shadow: 0px 0px 20px rgba(33,33,33,.8)
   }
+  .window-3d {
+    perspective: 1000px;
+  }
+  .window-3d h1{
+    transfrom: translateZ(100px)
+  }
   </style>
 </head>
 <body>
-  <div class="drop">请将图片拖拽到这里</div>
+  <div class="window-3d">
+    <div class="wrap">
+        <div class="drop">
+          <h1>请将图片拖拽到这里</h1>
+        </div>
+    </div>
+  </div>
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
   <script>
   window.onload = function(){
     let img = document.getElementById('img')
@@ -61,6 +73,20 @@
         reader.readAsDataURL(file)
       },false);
     }
+
+    var $wrap = $('.wrap')
+    var left = $wrap.offset().left;
+    var top = $wrap.offset().top;
+    $(document.body).on('mousemove touchmove', function(e){
+      e.preventDefault();
+      var centerX = (left + $wrap.width())/2
+      var centerY = (top + $wrap.height())/2
+      var mouseX = e.pageX || e.touches[0].pageX
+      var mouseY = e.pageY || e.touches[0].pageY
+      var degY = (-20)*Math.atan((centerX - mouseX)/1000)
+      var degX = (30)*Math.atan((centerY - mouseY)/1000)
+      $wrap.css('transform', 'rotateY(' + degY + 'deg) rotateX(' + degX + 'deg)')
+    })
   }
 
   // drop.on
