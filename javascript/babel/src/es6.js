@@ -36,24 +36,21 @@
 //     let i = 4
 // }
 
-class Student{
-  constructor(props) {
-    this.name = props.name
-    this.age = props.age
-  }
-  say(){
-    console.log(`i am a student, my name is ${this.name}`)
-  }
-}
+// class Student{
+//   constructor(props) {
+//     this.name = props.name
+//     this.age = props.age
+//   }
+//   say(){
+//     console.log(`i am a student, my name is ${this.name}`)
+//   }
+// }
 
-let xiaoming  = new Student({name:'xiaoming',age:18})
+// let xiaoming  = new Student({name:'xiaoming',age:18})
 
-xiaoming.say()
+// xiaoming.say()
 
+// import person from './person'
 
-
-
-
-
-
+// echo(person.name)
 

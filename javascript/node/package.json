@@ -1,0 +1,25 @@
+{
+  "name": "nodelab",
+  "version": "1.0.0",
+  "description": "this is my node laboratory",
+  "main": "Socket.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel *.js -d dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-preset-latest": "^6.16.0",
+    "eslint": "^3.7.1",
+    "eslint-config-standard": "^6.2.0",
+    "eslint-plugin-promise": "^3.0.0",
+    "eslint-plugin-standard": "^2.0.1"
+  },
+  "babel": {
+    "presets": [
+      "ES2015"
+    ]
+  }
+}
