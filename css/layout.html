@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Layout</title>
+    <style>
+        .box {
+            height: 100px;
+            float: left;
+            /* visibility: hidden; */
+        }
+
+        .box:nth-child(1) {
+            width: 100px;
+            background-color: red;
+        }
+
+        .box:nth-child(2) {
+            width: 200px;
+            background-color: orange;
+        }
+        
+        .box:nth-child(3) {
+            width: 300px;
+            background-color: yellow;
+        }
+        .lab-1 {
+            background-color: gray;
+            height:auto; overflow:hidden
+        }
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="lab-1 clearfix">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div style="margin-left: 300px; display: flex; align-items: center; justify-content: center; height: 100%;">3</div>
+        <!-- <span style="background-color: purple;width: 100%;">4</span> -->
+    </div>
+</body>
+</html>
