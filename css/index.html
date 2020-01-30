@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.bootcss.com/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <title>CSS 实验</title>
+    <style>
+        .block {
+            border: 1px solid #ccc;
+        }
+
+        .block-1 {
+            max-width: 600px;
+        }
+
+        .block-2-1 {
+            width: 500px;
+            height: 200px;
+            margin: 20px auto;
+        }
+
+        .block-2-1-2 {
+            padding: 20px;
+        }
+
+        .block-2-1-3 {
+            -webkit-box-sizing: border-box;
+               -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+        }
+
+        .position-1 {
+            position: relative;
+            width: 500px;
+            height: 100px;
+        }
+
+        .position-1-2 {
+            left: 20px;
+            top: -50px;
+            background-color: #fff;
+        }
+
+        .position-2 {
+            position: fixed;
+            background-color: #fff;
+        }
+
+        .position-2-2 {
+            right: 0;
+            bottom: 0;
+        }
+
+        .layout-container {
+            position: relative;
+        }
+
+        .layout-container nav {
+            position: absolute;
+            /* left: 0; */
+            width: 200px;
+        }
+
+        .layout-container section {
+            margin-left: 200px;
+        }
+
+        body {
+            padding-bottom: 500px
+        }
+
+        .float-1 {
+            width: 500px
+        }
+
+        .float-1 img {
+            float: right
+        }
+    </style>
+</head>
+<body>
+    <div class="block">
+        默认
+    </div>
+    <div>
+        <div class="block block-1">
+            block-1
+
+            <pre>max-width: 600</pre>
+            <p>600 以内，宽度自适应, 调整浏览器宽度，观察效果</p>
+        </div>
+    </div>
+<hr>
+    <div>
+        <div class="block position-1 position-1-1">
+            相对定位
+        </div>
+        <div class="block position-1 position-1-2">
+            相对定位
+            <pre>
+left: 20px;
+top: -20px;
+            </pre>
+        </div>
+        <div>
+            一个普通的元素，没有占据 相对定位 元素的空间
+        </div>
+        <!-- <div class="block position-2 position-2-1">
+            fixed 定位, 默认情况，不加 left, top 等
+        </div> -->
+        <div class="block position-2 position-2-2">
+            fixed 定位
+        </div>
+        <div>
+            一个普通的元素，占据了 绝对定位 元素的空间
+        </div>
+    </div>
+<hr>
+    <div>
+        <div class="block block-2-1 block-2-1-1">
+            block-2-1-1
+            <p>对照组</p>
+            <pre>
+width: 500px;
+height: 200px;
+margin: 20px auto;
+            </pre>
+        </div>
+        <div class="block block-2-1 block-2-1-2">
+            block-2-1-2
+
+            <pre>padding: 20px;</pre>
+            <p>设置了 padding 后, 比上面的 div 大了</p>
+        </div>
+        <div class="block block-2-1 block-2-1-2 block-2-1-3">
+            block-2-1-2
+
+            <pre>padding: 20px;</pre>
+            <p>跟上面一样 加了 box-sizing: border-box，支持 IE8+ </p>
+        </div>
+    </div>
+
+<hr>
+
+    <div>
+        <div class="block layout-container">
+            <nav class="block">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+            </nav>
+            <section>1</section>
+            <section>2</section>
+            <section>3</section>
+            <section>5</section>
+            <section>6</section>
+            <section>7</section>
+            <section>8</section>
+            <section>9</section>
+        </div>
+    </div>
+<hr>
+
+<div>
+    <div class="block" style="overflow: auto;">
+        <nav class="block" style="float: left; width: 200px;">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </nav>
+        <section>1</section>
+        <section>2</section>
+        <section>3</section>
+    </div>
+</div>
+
+<hr>
+
+    <div>
+        <p class="block float-1">
+            <img src="http://zh.learnlayout.com/images/ilta.png" alt="">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.
+        </p>
+    </div>
+<hr>
+    <div>
+        <div style="float:left">111</div>
+        <div class="block" style="clear: left;">222</div>
+    </div>
+
+    <div style="overflow: auto;" class="block">
+        <img style="float:right" src="http://zh.learnlayout.com/images/ilta.png" class="block" />
+        <div>111</div>
+    </div>
+</body>
+</html>
